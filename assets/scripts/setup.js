@@ -43,7 +43,7 @@ function setLang(text, lang) {
     return text;
 }
 function getData(fn) {
-    return fetch(`assets/lang/${fn}_${html.lang}.json` , {method: 'GET'})
+    return fetch(`assets/lang/${fn}_${html.lang.toLowerCase()}.json` , {method: 'GET'})
         .then(r => {
             if(!r.ok) {
                 throw new Error(r.status);
