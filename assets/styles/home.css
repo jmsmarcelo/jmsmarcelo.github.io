@@ -75,11 +75,13 @@ body {
 }
 .active .icon::before, .active .icon::after, .icon:hover::before, .icon:hover::after {
     color: var(--primary-color);
+    transform: scale(1.1);
 }
 .container {
     display: flex;
     justify-content: center;
     max-width: 900px;
+    height: 1200px;
 }
 @media screen and (orientation: portrait) {
     .nav-main {
@@ -115,6 +117,18 @@ body {
     }
 }
 @media screen and (orientation: landscape) {
+    body::before {
+        position: fixed;
+        display: flex;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        opacity: 0.1;
+        background: url('../images/jms-desktop.png') center/cover no-repeat;
+        z-index: -1;
+    }
     .nav-main {
         position: sticky;
         top: 0;

@@ -21,7 +21,7 @@
 :root, :root[data-theme='dark'] {
     --primary-color: #f0f0f0;
     --primary-bg-color: #111217;
-    --secondary-bg-color: #28292e;
+    --secondary-bg-color: rgb(40, 41, 46);
     --primary-border-color: #28292e;
     --secondary-border-color: #56575a;
     --title-color: #9a9a9c;
@@ -33,7 +33,7 @@
 :root[data-theme='light'] {
     --primary-color: #0b0b0f;
     --primary-bg-color: #e9e9e9;
-    --secondary-bg-color: #c7c8c9;
+    --secondary-bg-color: rgb(199, 200, 201);
     --primary-border-color: #c7c8c9;
     --secondary-border-color: #9a9a9c;
     --title-color: #0b0b0f;

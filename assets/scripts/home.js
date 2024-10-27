@@ -14,16 +14,25 @@ const main = document.querySelector('.container');
 function mainMaps(i) {
     return [
         {
-            "title": ["main", "h1", [["textContent", text('main-home-title')]]]
+            "title": ["main", "h1", [["textContent", 'lang__main-home-title']]]
         }
     ][i]
 }
-async function createContainer(el) {
-    if(!texts[html.lang]) {
-        texts[html.lang] = await getData('home');
-    }
+const navMain = {};
+const navMainLang = {};
+function createContainer(el) {
     for(let i = 0; i < navMainList.children.length; i++) {
-        navMainList.children[i].addEventListener('click', function() {
+        navMainList.children[i].addEventListener('click', async function() {
+            if(!navMain[i]) {
+                navMain[i] = [];
+                await loadScript(`nav-main-${i}`);
+            }
+            if(!navMainLang[html.lang] || !navMainLang[html.lang][i]) {
+                if(!navMainLang[html.lang]) {
+                    navMainLang[html.lang] = [];
+                }
+                navMainLang[html.lang][i] = await getData('nav-main-' + i); 
+            }
             const tabActive = document.querySelector('.nav-main__list .active');
             if(tabActive) {
                 tabActive.classList.remove('active');
@@ -32,7 +41,7 @@ async function createContainer(el) {
             while(main.lastChild) {
                 main.lastChild.remove();
             }
-            createElems(mainMaps(i), {main: main});
+            createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
         });
     }
     (el || navMainList.children[0]).click();
