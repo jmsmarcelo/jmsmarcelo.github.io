@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'Nav Icons';
+    src: url('../fonts/nav-icons.woff2') format('woff2');
+}
+:root {
+    --icon-lang: '1';
+    --nav-home-text: 'Home';
+    --nav-projects-text: 'Projects';
+    --nav-about-text: 'About';
+    --nav-contacts-text: 'Contacts';
+}
+:root[lang='pt-BR'] {
+    --icon-lang: '0';
+    --nav-home-text: 'Início';
+    --nav-projects-text: 'Projetos';
+    --nav-about-text: 'Sobre';
+    --nav-contacts-text: 'Contatos';
+}
+:root, :root[data-theme='dark'] {
+    --primary-color: #f0f0f0;
+    --primary-bg-color: #111217;
+    --secondary-bg-color: #28292e;
+    --primary-border-color: #28292e;
+    --secondary-border-color: #56575a;
+    --title-color: #9a9a9c;
+    --text-color: #9a9a9c;
+    --link-color: #9a9a9c;
+    --icon-color: #c7c8c9;
+    --theme-icon: 'L';
+}
+:root[data-theme='light'] {
+    --primary-color: #0b0b0f;
+    --primary-bg-color: #e9e9e9;
+    --secondary-bg-color: #c7c8c9;
+    --primary-border-color: #c7c8c9;
+    --secondary-border-color: #9a9a9c;
+    --title-color: #0b0b0f;
+    --text-color: #28292e;
+    --link-color: #28292e;
+    --icon-color: #56575a;
+    --theme-icon: 'D';
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    list-style: none;
+    color: var(--text-color);
+}
+h1, h2, h3 {
+    font-family: 'League Spartan', sans-serif;
+    text-transform: uppercase;
+    margin: 20px 0 7px;
+}
+.picture {
+    background: url('../images/picture.jpg') center/100% no-repeat;
+}
