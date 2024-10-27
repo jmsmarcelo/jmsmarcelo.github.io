@@ -53,7 +53,3 @@ function getData(fn) {
             throw new Error(e.message || 'error');
         })
 }
-const texts = {}
-function text(t) {
-    return texts[html.lang][t] || '';
-};

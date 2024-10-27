@@ -1,28 +1,26 @@
 const themeMode = document.querySelector('.icon.tm');
 const changeLang = document.querySelector('.icon.lang');
-themeMode.addEventListener('click', function() {
+themeMode.addEventListener('click', function(e) {
+    e.preventDefault();
     html.dataset.theme = (html.dataset.theme === 'dark' ? 'light' : 'dark');
 });
-changeLang.addEventListener('click', function() {
+changeLang.addEventListener('click', function(e) {
+    e.preventDefault();
     html.lang = (html.lang === 'en' ? 'pt-BR' : 'en');
     createContainer(document.querySelector('.nav-main__list .active'));
+    updateAG(btnsAG, [changeLang, themeMode]);
+    updateAG(ariaMainAG, navMainList);
 });
 schemeMode.addEventListener('change', changeTheme);
 
-const navMainList = document.querySelector('.nav-main__list');
+const navMainList = document.querySelectorAll('.nav-main__list a');
 const main = document.querySelector('.container');
-function mainMaps(i) {
-    return [
-        {
-            "title": ["main", "h1", [["textContent", 'lang__main-home-title']]]
-        }
-    ][i]
-}
 const navMain = {};
 const navMainLang = {};
 function createContainer(el) {
-    for(let i = 0; i < navMainList.children.length; i++) {
-        navMainList.children[i].addEventListener('click', async function() {
+    for(let i = 0; i < navMainList.length; i++) {
+        navMainList[i].addEventListener('click', async function(e) {
+            e.preventDefault();
             if(!navMain[i]) {
                 navMain[i] = [];
                 await loadScript(`nav-main-${i}`);
@@ -44,6 +42,23 @@ function createContainer(el) {
             createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
         });
     }
-    (el || navMainList.children[0]).click();
+    (el || navMainList[0]).click();
 }
 createContainer();
+const btnsAG = [
+    {'en': 'Change language', 'pt-BR': 'Mudar idioma'},
+    {'en': 'Change theme', 'pt-BR': 'Mudar tema'}
+]
+const ariaMainAG = [
+    {'en': 'Go to home page', 'pt-BR': 'Ir para a página inicial'},
+    {'en': 'Go to projects page', 'pt-BR': 'Ir para a página de projetos'},
+    {'en': 'Go to about page', 'pt-BR': 'Ir para a página sobre mim'},
+    {'en': 'Go to contact page', 'pt-BR': 'Ir para a página de contato'}
+];
+function updateAG(att, els) {
+    for(let i = 0; i < att.length; i++) {
+        els[i]['title'] = els[i]['ariaLabel'] = att[i][html.lang];
+    }
+}
+updateAG(btnsAG, [changeLang, themeMode]);
+updateAG(ariaMainAG, navMainList);

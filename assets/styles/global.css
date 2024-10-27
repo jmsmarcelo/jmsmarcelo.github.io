@@ -9,14 +9,14 @@
     --nav-home-text: 'Home';
     --nav-projects-text: 'Projects';
     --nav-about-text: 'About';
-    --nav-contacts-text: 'Contacts';
+    --nav-contacts-text: 'Contact';
 }
 :root[lang='pt-BR'] {
     --icon-lang: '0';
     --nav-home-text: 'Início';
     --nav-projects-text: 'Projetos';
     --nav-about-text: 'Sobre';
-    --nav-contacts-text: 'Contatos';
+    --nav-contacts-text: 'Contato';
 }
 :root, :root[data-theme='dark'] {
     --primary-color: #f0f0f0;
@@ -48,7 +48,10 @@
     box-sizing: border-box;
     vertical-align: baseline;
     list-style: none;
+    text-decoration: none;
     color: var(--text-color);
+    background: none;
+    border: none;
 }
 h1, h2, h3 {
     font-family: 'League Spartan', sans-serif;
