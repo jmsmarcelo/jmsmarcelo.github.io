@@ -32,6 +32,7 @@ body {
     justify-content: space-around;
     align-items: flex-end;
     margin: 3px;
+    padding: 1px;
 }
 .icon {
     display: flex;
@@ -77,7 +78,30 @@ body {
     display: flex;
     justify-content: center;
     max-width: 900px;
-    height: 1200px;
+}
+.repo-tab {
+    margin-bottom: 10px;
+}
+.repo-link {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0px 12px 7px;
+    border: 1px solid ;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: var(--secondary-bg-color);
+}
+.repo-link:hover, .repo-link:hover > * {
+    color: var(--primary-color);
+    background-color: var(--primary-bg-color);
+}
+.repo-btn {
+    margin: 10px;
+    cursor: pointer;
+}
+.repo-btn:hover {
+    color: var(--primary-color);
 }
 @media screen and (orientation: portrait) {
     .nav-main {

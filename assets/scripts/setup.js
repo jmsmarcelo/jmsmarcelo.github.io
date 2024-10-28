@@ -18,7 +18,7 @@ function loadScript(fn) {
         document.head.appendChild(s);
     });
 }
-async function createElems(m, t, l) {
+function createElems(m, t, l) {
     for(const k in m) {
         t[k] = document.createElement(m[k][1]);
         if(m[k][2]) {
@@ -31,7 +31,7 @@ async function createElems(m, t, l) {
             }
         }
         if(t[m[k][0]]) {
-            await t[m[k][0]].appendChild(t[k]);
+            t[m[k][0]].appendChild(t[k]);
         }
     }
     return t;
