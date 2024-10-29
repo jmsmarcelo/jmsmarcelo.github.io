@@ -62,3 +62,7 @@ function updateAG(att, els) {
 }
 updateAG(btnsAG, [changeLang, themeMode]);
 updateAG(ariaMainAG, navMainList);
+createElems({
+    copy: ['body', 'p', [['innerHTML', `&copy; ${new Date().getFullYear()} `]]],
+    by: ['copy', 'a', [['textContent', 'Jose Marcelo'], ['href', 'https://github.com/jmsmarcelo']]]
+}, {body: document.querySelector('.footer')});
