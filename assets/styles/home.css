@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: flex-end;
     margin: 7px 12px;
-    gap: 20px;
+    gap: 30px;
 }
 .header__logo {
     position: fixed;
@@ -30,6 +30,7 @@ body {
 .nav-main {
     width: 100%;
     background-color: var(--primary-bg-color);
+    border-radius: 7px;
     z-index: 10;
 }
 .nav-main__list {
@@ -42,14 +43,16 @@ body {
 }
 .icon {
     display: flex;
+    font-size: 24px;
     flex-direction: column;
     justify-content: center;
-    padding: 7px 20px;
+    align-items: center;
     user-select: none;
 }
-.icon.lang::before {
+.icon::before {
     font-family: 'Nav Icons';
-    font-size: 32px;
+}
+.icon.lang::before {
     content: var(--icon-lang);
 }
 .icon::before, .icon::after {
@@ -60,8 +63,6 @@ body {
     cursor: pointer;
 }
 .icon.tm::before {
-    font-family: 'Nav Icons';
-    font-size: 42px;
     content: var(--theme-icon);
 }
 .icon.h::after {
@@ -113,7 +114,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
-    font-size: small;
+    font-size: smaller;
 }
 .repo-lang {
     position: relative;
@@ -142,15 +143,16 @@ body {
 .repo-lang.html::before {
     background-color: #E34C26;
 }
-.star {
+.repo-icons {
+    display: flex;
     position: relative;
-    padding-left: 15px;
+    align-items: center;
+    padding-left: 18px;
 }
-.star::before {
+.repo-icons.star::before {
     content: '2';
     position: absolute;
     left: 0;
-    font-size: 18px;
     font-family: 'Nav Icons';
 }
 .repo-btn {
@@ -159,6 +161,42 @@ body {
 }
 .repo-btn:hover {
     color: var(--primary-color);
+}
+.icon-sm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.5rem;
+}
+.icon-sm::before {
+    font-family: 'Nav Icons';
+    padding: 1px;
+    flex-direction: row;
+}
+.icon-sm.email::before {
+    content: 'C';
+}
+.icon-sm.email::after {
+    content: 'jmsmarcelos@gmail.com';
+}
+.icon-sm.wa::before {
+    content: '5';
+}
+.icon-sm.wa::after {
+    content: '+55 69 9 9287-9084';
+}
+.icon-sm:hover {
+    color: var(--link-color);
+    
+}
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 7px;
 }
 @media screen and (orientation: portrait) {
     .nav-main {
@@ -169,9 +207,8 @@ body {
     .nav-main__list  .icon.active {
         border-top: 1px solid var(--primary-color);
     }
-    .icon::before {
-        font-family: 'Nav Icons';
-        font-size: 37px;
+    .icon:not(.lang, .tm)::before {
+        padding: 5px 20px 0;
     }
     .icon.h::before {
         content: 'H';
@@ -186,7 +223,6 @@ body {
         content: 'C';
     }
     .icon::after {
-        margin-top: -7px;
         font-size: 12px;
     }
     .container {
@@ -226,6 +262,7 @@ body {
         border-bottom: 1px solid var(--primary-color);
     }
     .icon::after {
+        padding: 10px 30px;
         font-size: 1.5rem;
         text-transform: uppercase;
     }

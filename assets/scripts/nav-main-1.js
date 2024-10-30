@@ -24,7 +24,7 @@ function loadRepo() {
                 elems[repo.name + '_info'] = [repo.name + '_link', 'div', [['classList', 'repo-info']]];
                 elems[repo.name + '_lang'] = [repo.name + '_info', 'span', [['innerHTML', repo.language || '&nbsp;'], ['classList', `repo-lang ${repo.language.toLowerCase()}`]]];
                 if(repo.stargazers_count > 0) {
-                    elems[repo.name + '_star'] = [repo.name + '_info', 'span', [['innerHTML', repo.stargazers_count || '&nbsp;'], ['classList', 'star']]];
+                    elems[repo.name + '_star'] = [repo.name + '_info', 'span', [['innerHTML', repo.stargazers_count || '&nbsp;'], ['classList', 'repo-icons star']]];
                 }
             });
             createElems(elems, {repos: document.querySelector('.repos')}, navMainLang[html.lang][1]);

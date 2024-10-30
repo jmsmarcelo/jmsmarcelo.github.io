@@ -19,7 +19,7 @@ const navMain = {};
 const navMainLang = {};
 function createContainer(el) {
     for(let i = 0; i < navMainList.length; i++) {
-        navMainList[i].addEventListener('click', async function(e) {
+        navMainList[i].onclick = async function(e) {
             e.preventDefault();
             if(!navMain[i]) {
                 navMain[i] = [];
@@ -40,7 +40,7 @@ function createContainer(el) {
                 main.lastChild.remove();
             }
             createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
-        });
+        };
     }
     (el || navMainList[0]).click();
 }
