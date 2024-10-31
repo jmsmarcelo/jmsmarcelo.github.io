@@ -4,6 +4,12 @@
     font-family: 'Nav Icons';
     src: url('../fonts/nav-icons.woff2') format('woff2');
 }
+@font-face {
+    font-family: 'Adobe Clean';
+    font-style: normal;
+    font-weight: bolder;
+    src: url('../fonts/AdobeCleanExtraBold.woff') format('woff');
+}
 :root {
     --icon-lang: '1';
     --nav-home-text: 'Home';

@@ -1,5 +1,10 @@
 const themeMode = document.querySelector('.icon.tm');
 const changeLang = document.querySelector('.icon.lang');
+const navMainEls = document.querySelectorAll('.nav-main__list a');
+let navSelected = 0;
+const main = document.querySelector('.container');
+const navMain = {};
+const navMainLang = {};
 themeMode.addEventListener('click', function(e) {
     e.preventDefault();
     html.dataset.theme = (html.dataset.theme === 'dark' ? 'light' : 'dark');
@@ -7,44 +12,42 @@ themeMode.addEventListener('click', function(e) {
 changeLang.addEventListener('click', function(e) {
     e.preventDefault();
     html.lang = (html.lang === 'en' ? 'pt-BR' : 'en');
-    createContainer(document.querySelector('.nav-main__list .active'));
+    createContainer(navSelected);
     updateAG(btnsAG, [changeLang, themeMode]);
-    updateAG(ariaMainAG, navMainList);
+    updateAG(ariaMainAG, navMainEls);
 });
 schemeMode.addEventListener('change', changeTheme);
-
-const navMainList = document.querySelectorAll('.nav-main__list a');
-const main = document.querySelector('.container');
-const navMain = {};
-const navMainLang = {};
-function createContainer(el) {
-    for(let i = 0; i < navMainList.length; i++) {
-        navMainList[i].onclick = async function(e) {
-            e.preventDefault();
-            if(!navMain[i]) {
-                navMain[i] = [];
-                await loadScript(`nav-main-${i}`);
-            }
-            if(!navMainLang[html.lang] || !navMainLang[html.lang][i]) {
-                if(!navMainLang[html.lang]) {
-                    navMainLang[html.lang] = [];
-                }
-                navMainLang[html.lang][i] = await getData('nav-main-' + i); 
-            }
-            const tabActive = document.querySelector('.nav-main__list .active');
-            if(tabActive) {
-                tabActive.classList.remove('active');
-            }
-            this.classList.add('active');
-            while(main.lastChild) {
-                main.lastChild.remove();
-            }
-            createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
-        };
+async function createContainer(i) {
+    if(!navMain[i]) {
+        await loadScript(`container-main-${i}`);
     }
-    (el || navMainList[0]).click();
+    if(!navMainLang[html.lang] || !navMainLang[html.lang][i]) {
+        if(!navMainLang[html.lang]) {
+            navMainLang[html.lang] = [];
+        }
+        navMainLang[html.lang][i] = await getData('container-main-' + i); 
+    }
+    const tabActive = document.querySelector('.nav-main__list .active');
+    if(tabActive) {
+        tabActive.classList.remove('active');
+    }
+    navMainEls[i].classList.add('active');
+    while(main.lastChild) {
+        main.lastChild.remove();
+    }
+    createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
 }
-createContainer();
+function setupNavMain() {
+    for(let i = 0; i < navMainEls.length; i++) {
+        navMainEls[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            createContainer(i);
+            navSelected = i;
+        });
+    }
+    navMainEls[navSelected].click();
+}
+setupNavMain();
 const btnsAG = [
     {'en': 'Change language', 'pt-BR': 'Mudar idioma'},
     {'en': 'Change theme', 'pt-BR': 'Mudar tema'}
@@ -61,7 +64,7 @@ function updateAG(att, els) {
     }
 }
 updateAG(btnsAG, [changeLang, themeMode]);
-updateAG(ariaMainAG, navMainList);
+updateAG(ariaMainAG, navMainEls);
 createElems({
     copy: ['body', 'p', [['innerHTML', `&copy; ${new Date().getFullYear()} `]]],
     by: ['copy', 'a', [['textContent', 'Jose Marcelo'], ['href', 'https://github.com/jmsmarcelo']]]

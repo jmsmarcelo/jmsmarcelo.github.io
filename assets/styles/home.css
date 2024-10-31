@@ -26,6 +26,7 @@ body {
 .header__logo:hover {
     width: 150px;
     height: 150px;
+    z-index: 12;
 }
 .nav-main {
     width: 100%;
@@ -190,13 +191,41 @@ body {
     color: var(--link-color);
     
 }
-.contacts {
+fieldset {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 20px;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid var(--text-color);
     border-radius: 7px;
+}
+.adobe {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    font-family: 'Adobe Clean', sans-serif;
+    padding: 2px;
+    border: 1px solid;
+    border-radius: 9px;
+    background-color: #FF9A00;
+}
+.adobe::before {
+    content: 'Au';
+    display: flex;
+    width: 37px;
+    height: 33px;
+    justify-content: center;
+    font-size: 25px;
+    color: #FF9A00;
+    border-radius: 20%;
+    background-color: #330000;
+}
+.adobe::after {
+    content: 'Illustrator';
+    margin: auto 12px;
+    font-size: 25px;
+    color: #330000;
 }
 @media screen and (orientation: portrait) {
     .nav-main {
@@ -223,6 +252,7 @@ body {
         content: 'C';
     }
     .icon::after {
+        width: 100%;
         font-size: 12px;
     }
     .container {
