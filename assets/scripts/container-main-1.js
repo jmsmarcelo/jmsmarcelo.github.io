@@ -1,4 +1,4 @@
-navMain[1] = {
+containerMain[1] = {
     repoTab: ['main', 'section', [['classList', 'repo-tab']]],
     repoTitle: ['repoTab', 'h2', [['textContent', 'lang__title']]],
     repos: ['repoTab', 'ol', [['classList', 'repos']]],
@@ -8,11 +8,10 @@ let repoPage = 1;
 const repoPerPage = 5;
 function loadRepo() {
     const elems = {};
-    fetch(`https://api.github.com/users/jmsmarcelo/repos?per_page=${repoPerPage}&page=${repoPage}&sort=created&direction=desc`)
-        .then(r => r.ok ? r.json() : Promise.reject())
+    loadData(`https://api.github.com/users/jmsmarcelo/repos?per_page=${repoPerPage}&page=${repoPage}&sort=created&direction=desc`)
         .then(json => {
             if(json.length < repoPerPage) {
-                delete navMain[1].repoBtn;
+                delete containerMain[1].repoBtn;
                 document.querySelector('.repo-btn').remove();
                 if(json.length === 0) return;
             }
@@ -27,9 +26,16 @@ function loadRepo() {
                     elems[repo.name + '_star'] = [repo.name + '_info', 'span', [['innerHTML', repo.stargazers_count || '&nbsp;'], ['classList', 'repo-icons star']]];
                 }
             });
-            createElems(elems, {repos: document.querySelector('.repos')}, navMainLang[html.lang][1]);
-            Object.assign(navMain[1], elems);
+            createElems(elems, {repos: document.querySelector('.repos')}, containerMainLang[html.lang][1]);
+            Object.assign(containerMain[1], elems);
             repoPage++;
+        }).catch(() => {
+            createElems(
+                {status: ['main', 'p', [['textContent', 'lang__repo_erro']]],},
+                {main: document.querySelector('.repos')},
+                containerMainLang[html.lang][1]
+            );
+            document.querySelector('.repo-btn').remove();
         });
 }
 loadRepo();

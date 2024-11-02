@@ -1,4 +1,5 @@
 {
     "title": "Meus repositorios no GitHub",
-    "btn_name": "Carregar Mais"
+    "btn_name": "Carregar Mais",
+    "repo_erro": "Não foi possível carregar os repositorios, tente novamente!"
 }

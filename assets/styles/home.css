@@ -9,6 +9,7 @@ body {
     background: var(--primary-bg-color);
 }
 .header {
+    position: relative;
     display: flex;
     justify-content: flex-end;
     margin: 7px 12px;
@@ -27,6 +28,12 @@ body {
     width: 150px;
     height: 150px;
     z-index: 12;
+}
+.header__title {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    margin-top: 3px;
 }
 .nav-main {
     width: 100%;
@@ -85,6 +92,7 @@ body {
 .container {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     max-width: 900px;
     padding-bottom: 50px;
@@ -114,7 +122,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
     font-size: smaller;
 }
 .repo-lang {
@@ -195,37 +203,182 @@ fieldset {
     display: flex;
     width: 100%;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     padding: 20px;
     border: 1px solid var(--text-color);
     border-radius: 7px;
+    background-color: var(--primary-bg-color);
 }
-.adobe {
+legend {
+    padding: 0 3px;
+}
+.about-container {
+    max-width: 500px;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 7px;
+    gap: 3px;
+}
+.about-container p {
+    width: calc(100% - 160px);
+    min-width: 171px;
+    text-align: left;
+}
+.about-icon {
     display: flex;
-    width: max-content;
+    width: 150px;
     align-items: center;
-    font-family: 'Adobe Clean', sans-serif;
     padding: 2px;
-    border: 1px solid;
+    margin: 3px;
+    border: 1px solid var(--text-color);
     border-radius: 9px;
+    gap: 7px;
+    font-family: 'Adobe Clean', sans-serif;
+    background-color: #ffffff;
+}
+.about-icon::before {
+    display: flex;
+    width: 30px;
+    height: 26px;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 7px;
+}
+.about-icon::after {
+    font-size: 18px;
+}
+
+.about-icon.html5::before {
+    content: '';
+    background: url('../images/html5.svg') center/70% no-repeat;
+}
+.about-icon.html5::after {
+    content: 'HTML5';
+    color: #e44d26;
+}
+.about-icon.css3::before {
+    content: '';
+    background: url('../images/css3.svg') center/70% no-repeat;
+}
+.about-icon.css3::after {
+    content: 'CSS3';
+    color: #264de4;
+}
+.about-icon.js::before {
+    content: '';
+    background: url('../images/js.svg') center/70% no-repeat;
+}
+.about-icon.js::after {
+    content: 'JavaScript';
+    color: #000000;
+}
+.about-icon.php::before {
+    content: '';
+    background: url('../images/php.svg') center/contain no-repeat;
+}
+.about-icon.php::after {
+    content: 'PHP';
+    color: #000000;
+}
+.about-icon.java::before {
+    content: '';
+    background: url('../images/java.svg') center/contain no-repeat;
+}
+.about-icon.java::after {
+    content: 'Java';
+    color: #f8981d;
+}
+.about-icon.javafx::before {
+    content: '';
+    background: url('../images/java.svg') center/contain no-repeat;
+}
+.about-icon.javafx::after {
+    content: 'JavaFX';
+    background-image: linear-gradient(to right, #f8981d 0%, #f8981d 0 60%, #5382a1 60%, #5382a1 100%);
+    color: transparent;
+    background-clip: text;
+}
+.about-icon.spring::before {
+    content: '';
+    background: url('../images/spring.svg') center/contain no-repeat;
+}
+.about-icon.spring::after {
+    content: 'Spring';
+    color: #5382a1;
+}
+.about-icon.kotlin::before {
+    content: '';
+    background: url('../images/kotlin.svg') center/70% no-repeat;
+}
+.about-icon.kotlin::after {
+    content: 'Kotlin';
+    color: #000000;
+}
+.about-icon.mysql::before {
+    content: '';
+    background: url('../images/mysql.svg') center/70% no-repeat;
+}
+.about-icon.mysql::after {
+    content: 'MySQL';
+    background-image: linear-gradient(to right, #5d87a1 0%, #5d8791 40%, #f8981d 40%, #f8981d 100%);
+    color: transparent;
+    background-clip: text;
+}
+.about-icon.ai {
     background-color: #FF9A00;
 }
-.adobe::before {
-    content: 'Au';
-    display: flex;
-    width: 37px;
-    height: 33px;
-    justify-content: center;
-    font-size: 25px;
+.about-icon.ai::before {
+    content: 'Ai';
     color: #FF9A00;
-    border-radius: 20%;
     background-color: #330000;
 }
-.adobe::after {
+.about-icon.ai::after {
     content: 'Illustrator';
-    margin: auto 12px;
-    font-size: 25px;
     color: #330000;
+}
+.about-icon.ps {
+    background-color: #31A8FF;
+}
+.about-icon.ps::before {
+    content: 'Ps';
+    color: #31A8FF;
+    background-color: #001E36;
+}
+.about-icon.ps::after {
+    content: 'Photoshop';
+    color: #001E36;
+}
+.about-icon.pr, .about-icon.ae, .about-icon.au {
+    background-color: #9999FF;
+}
+.about-icon.pr::before {
+    content: 'Pr';
+    color: #9999FF;
+    background-color: #00005B;
+}
+.about-icon.pr::after {
+    content: 'Premiere';
+    color: #00005B;
+}
+.about-icon.ae::before {
+    content: 'Ae';
+    color: #9999FF;
+    background-color: #00005B;
+}
+.about-icon.ae::after {
+    content: 'After Effects';
+    color: #00005B;
+}
+.about-icon.au::before {
+    content: 'Au';
+    color: #9999FF;
+    background-color: #00005B;
+}
+.about-icon.au::after {
+    content: 'Audition';
+    color: #00005B;
 }
 @media screen and (orientation: portrait) {
     .nav-main {
@@ -257,8 +410,6 @@ fieldset {
     }
     .container {
         margin: 15px 7px;
-    }
-    .container {
         padding-bottom: 100px;
     }
     .footer {
@@ -301,5 +452,11 @@ fieldset {
     }
     .repo-link {
         width: 640px;
+    }
+}
+@media screen and (max-width: 359px) {
+    .about-container p {
+        width: 100%;
+        text-align: center;
     }
 }

@@ -3,8 +3,8 @@ const changeLang = document.querySelector('.icon.lang');
 const navMainEls = document.querySelectorAll('.nav-main__list a');
 let navSelected = 0;
 const main = document.querySelector('.container');
-const navMain = {};
-const navMainLang = {};
+const containerMain = {};
+const containerMainLang = {};
 themeMode.addEventListener('click', function(e) {
     e.preventDefault();
     html.dataset.theme = (html.dataset.theme === 'dark' ? 'light' : 'dark');
@@ -18,14 +18,15 @@ changeLang.addEventListener('click', function(e) {
 });
 schemeMode.addEventListener('change', changeTheme);
 async function createContainer(i) {
-    if(!navMain[i]) {
-        await loadScript(`container-main-${i}`);
-    }
-    if(!navMainLang[html.lang] || !navMainLang[html.lang][i]) {
-        if(!navMainLang[html.lang]) {
-            navMainLang[html.lang] = [];
+    const mainRect = document.querySelector('.nav-main').getBoundingClientRect();
+    const mainTop = (mainRect.top < 70 ? (52 - mainRect.top) : 0);
+    const statusErro = {
+        'en': {
+            status: 'Page could not be loaded, please try again!'
+        },
+        'pt-BR': {
+            status: 'Não foi possível carregar a página, tente novamente!'
         }
-        navMainLang[html.lang][i] = await getData('container-main-' + i); 
     }
     const tabActive = document.querySelector('.nav-main__list .active');
     if(tabActive) {
@@ -35,7 +36,33 @@ async function createContainer(i) {
     while(main.lastChild) {
         main.lastChild.remove();
     }
-    createElems(navMain[i], {main: main}, navMainLang[html.lang][i]);
+    if(!containerMain[i]) {
+        try {
+            await loadScript(`container-main-${i}`);
+        } catch(e) {
+            createElems(
+                {status: ['main', 'p', [['textContent', 'lang__status']]]},
+                {main: main},
+                statusErro[html.lang]
+            );
+        }
+    }
+    if(!containerMainLang[html.lang] || !containerMainLang[html.lang][i]) {
+        if(!containerMainLang[html.lang]) {
+            containerMainLang[html.lang] = [];
+        }
+        try {
+            containerMainLang[html.lang][i] = await getData('container-main-' + i);
+        } catch {
+            createElems(
+                {status: ['main', 'p', [['textContent', 'lang__status']]]},
+                {main: main},
+                statusErro[html.lang]
+            );
+        }
+    }
+    createElems(containerMain[i], {main: main}, containerMainLang[html.lang][i]);
+    window.scrollTo({ top: mainTop, behavior: 'smooth' });
 }
 function setupNavMain() {
     for(let i = 0; i < navMainEls.length; i++) {
@@ -49,8 +76,8 @@ function setupNavMain() {
 }
 setupNavMain();
 const btnsAG = [
-    {'en': 'Change language', 'pt-BR': 'Mudar idioma'},
-    {'en': 'Change theme', 'pt-BR': 'Mudar tema'}
+    {'en': 'Change language to', 'pt-BR': 'Mudar idioma para'},
+    {'en': 'Change theme to', 'pt-BR': 'Mudar tema para'}
 ]
 const ariaMainAG = [
     {'en': 'Go to home page', 'pt-BR': 'Ir para a página inicial'},
@@ -65,7 +92,11 @@ function updateAG(att, els) {
 }
 updateAG(btnsAG, [changeLang, themeMode]);
 updateAG(ariaMainAG, navMainEls);
-createElems({
-    copy: ['body', 'p', [['innerHTML', `&copy; ${new Date().getFullYear()} `]]],
-    by: ['copy', 'a', [['textContent', 'Jose Marcelo'], ['href', 'https://github.com/jmsmarcelo']]]
-}, {body: document.querySelector('.footer')});
+createElems(
+    {
+        copy: ['body', 'p', [['innerHTML', `&copy; ${new Date().getFullYear()} `]]],
+        by: ['copy', 'a', [['textContent', 'Jose Marcelo'], ['href', 'https://github.com/jmsmarcelo']]]
+    }, {
+        body: document.querySelector('.footer')
+    }
+);

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 101.87 101.86">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-11.54" y1="13.31" x2="70.14" y2="95" gradientTransform="translate(0 101.37) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".11" stop-color="#c757bc"/>
+      <stop offset=".21" stop-color="#d0609a"/>
+      <stop offset=".43" stop-color="#e1725c"/>
+      <stop offset=".6" stop-color="#ee7e2f"/>
+      <stop offset=".74" stop-color="#f58613"/>
+      <stop offset=".82" stop-color="#f88909"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="35.93" y1="-15.46" x2="78.96" y2="27.57" gradientTransform="translate(0 101.37) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".1" stop-color="#0095d5"/>
+      <stop offset=".3" stop-color="#238ad9"/>
+      <stop offset=".62" stop-color="#557bde"/>
+      <stop offset=".86" stop-color="#7472e2"/>
+      <stop offset="1" stop-color="#806ee3"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="-4.67" y1="69.8" x2="32.94" y2="107.41" gradientTransform="translate(0 101.37) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".1" stop-color="#0095d5"/>
+      <stop offset=".3" stop-color="#238ad9"/>
+      <stop offset=".62" stop-color="#557bde"/>
+      <stop offset=".86" stop-color="#7472e2"/>
+      <stop offset="1" stop-color="#806ee3"/>
+    </linearGradient>
+  </defs>
+  <polygon points="51.15 0 0 53.79 0 101.86 51.07 50.71 101.87 0 51.15 0" fill="url(#linear-gradient)"/>
+  <polygon points="0 101.86 51.07 50.71 101.87 101.86 0 101.86" fill="url(#linear-gradient-2)"/>
+  <polygon points="0 0 51.15 0 0 53.79 0 0" fill="url(#linear-gradient-3)"/>
+</svg>

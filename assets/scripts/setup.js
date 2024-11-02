@@ -38,12 +38,12 @@ function createElems(m, t, l) {
 }
 function setLang(text, lang) {
     if(typeof text === 'string' && text.match(/^lang__.+/)) {
-        return lang[text.split('__')[1]] || '';
+        return lang[text.split('__')[1]] || text;
     }
     return text;
 }
-function getData(fn) {
-    return fetch(`assets/lang/${fn}_${html.lang.toLowerCase()}.json` , {method: 'GET'})
+const loadData = async url => {
+    return await fetch(url)
         .then(r => {
             if(!r.ok) {
                 throw new Error(r.status);
@@ -51,5 +51,8 @@ function getData(fn) {
             return r.json();
         }).catch(e => {
             throw new Error(e.message || 'error');
-        })
+        });
+}
+function getData(fn) {
+    return loadData(`assets/lang/${fn}_${html.lang.toLowerCase()}.json`);
 }

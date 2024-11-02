@@ -62,7 +62,7 @@
 h1, h2, h3 {
     font-family: 'League Spartan', sans-serif;
     text-transform: uppercase;
-    margin: 20px 0 7px;
+    margin: 15px 0 7px;
 }
 .picture {
     background: url('../images/picture.jpg') center/100% no-repeat;
