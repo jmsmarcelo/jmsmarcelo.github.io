@@ -140,6 +140,12 @@ body {
     opacity: 0.6;
     background-color: var(--text-color);
 }
+.repo-lang.c::before {
+    background-color: #555555;
+}
+.repo-lang.cpp::before {
+    background-color: #ed437d;
+}
 .repo-lang.java::before {
     background-color: #b07219;
 }
@@ -281,6 +287,22 @@ legend {
 .about-icon.php::after {
     content: 'PHP';
     color: #000000;
+}
+.about-icon.c::before {
+    content: '';
+    background: url('../images/c.svg') center/70% no-repeat;
+}
+.about-icon.c::after {
+    content: 'C';
+    color: #00599c;
+}
+.about-icon.cpp::before {
+    content: '';
+    background: url('../images/cpp.svg') center/70% no-repeat;
+}
+.about-icon.cpp::after {
+    content: 'C++';
+    color: #00599c;
 }
 .about-icon.java::before {
     content: '';

@@ -7,6 +7,8 @@ containerMain[2] = {
     'progCss3': ['progIcons', 'div', [['classList', 'about-icon css3']]],
     'progJs': ['progIcons', 'div', [['classList', 'about-icon js']]],
     'progPhp': ['progIcons', 'div', [['classList', 'about-icon php']]],
+    'progC': ['progIcons', 'div', [['classList', 'about-icon c']]],
+    'progCCpp': ['progIcons', 'div', [['classList', 'about-icon cpp']]],
     'progJava': ['progIcons', 'div', [['classList', 'about-icon java']]],
     'progJavaFx': ['progIcons', 'div', [['classList', 'about-icon javafx']]],
     'progSpring': ['progIcons', 'div', [['classList', 'about-icon spring']]],
